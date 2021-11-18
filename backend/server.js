@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 import colors from 'colors'
 import helmet from 'helmet'
 import morgan from 'morgan'
-
+import { errorHandler, notFound } from './middleware/errorMiddleware.js'
 import connectDB from './config/db.js'
 
 //Routes
@@ -22,6 +22,9 @@ app.use(morgan('common'))
 
 app.use('/api/auth', authRoutes)
 app.use('/api/users', userRoutes)
+
+app.use(notFound)
+app.use(errorHandler)
 
 const PORT = process.env.PORT
 app.listen(PORT, () => {
