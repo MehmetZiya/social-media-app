@@ -10,6 +10,7 @@ import connectDB from './config/db.js'
 //Routes
 import userRoutes from './routes/userRoutes.js'
 import authRoutes from './routes/authRoutes.js'
+import postRoutes from './routes/postRoutes.js'
 
 dotenv.config()
 
@@ -22,6 +23,7 @@ app.use(morgan('common'))
 
 app.use('/api/auth', authRoutes)
 app.use('/api/users', userRoutes)
+app.use('/api/posts', postRoutes)
 
 app.use(notFound)
 app.use(errorHandler)
